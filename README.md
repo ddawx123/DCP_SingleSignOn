@@ -5,7 +5,7 @@
 本系统已经通过测试，成功整合多种常见应用程序，如Discuz、WordPress、ZBlogPHP、ZBlogASP、DEDECMS、PHPCMS、Typecho等常见系统，以及各大企业OA系统。目前本人已经投入使用的站点有：小丁工作室官方首页、浅忆技术博客、浅忆小铺（电商）、小丁工作室留言系统、帮助中心、小丁工作室官方社区、小丁工作室官方微信、上网Web认证系统、数据库管理系统、小丁工作室云计算资源控制中心等，以及其他企事业单位站点如学生机房互联网通行证、数字校园数据互通、机房上机行为监控中心、在线考试系统、防作弊系统等。
 
 ## 运行实例演示视频
-<embed src="wangyesheji1.wmv" width="460" height="414" autostart="1" filename="mms:/wangyesheji1.wmv" showcontrols="1" showstatusbar="1"></embed>
+<embed src="https://static2.dingstudio.cn/videos/20170717191116.wmv" type="video/x-ms-wmv" width="800" height="600" autoStart="0" showControls="1" showstatusbar="1" />
 https://static2.dingstudio.cn/videos/20170717191116.wmv
 
 ## 系统功能说明
