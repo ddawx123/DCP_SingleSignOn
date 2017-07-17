@@ -3,7 +3,7 @@
 * SSO应用核心库文件，在这里包含了SSO的一些实现方法类+函数过程。
 * @package DingStudio_SSO_CoreServlet
 * @subpackage SSO/Core 核心类库
-* @copyright 2016-2017 DingStudio All Right Reserved
+* @copyright 2016-2017 DingStudio All Rights Reserved
 */
 
 require_once(dirname(__FILE__)."/config.php");//引入应用配置文件

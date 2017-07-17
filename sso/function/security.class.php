@@ -3,7 +3,7 @@
  * 安全增强组件类_v1内部版本
  * @package DingStudio_API_Interface
  * @subpackage API/Security 安全类库
- * @copyright DingStudio 2016-2017 All Right Reserved
+ * @copyright DingStudio 2016-2017 All Rights Reserved
  */
 
 class Security {

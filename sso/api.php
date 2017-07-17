@@ -1,5 +1,5 @@
 <?php
-//判断接口工作模式 (Added in July 15, 2017|Powered By DingStudio Copyright 2017 All Right Reserved)
+//判断接口工作模式 (Added in July 15, 2017|Powered By DingStudio Copyright 2017 All Rights Reserved)
 if (@$_POST['cors_domain'] != '') {
 	header('Access-Control-Allow-Origin: '.$_POST['cors_domain']);//允许跨域请求
 	header('Access-Control-Allow-Credentials: true');//允许跨域数据传送

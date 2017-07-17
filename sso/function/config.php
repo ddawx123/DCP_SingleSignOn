@@ -1,7 +1,7 @@
 <?php
 /**
 * SSO应用配置文件，在这里定义一些常量用于登记MySQL数据库服务器的信息。
-* Copyright 2016-2017 DingStudio All Right Reserved
+* Copyright 2016-2017 DingStudio All Rights Reserved
 */
 
 define('mysql_server_address','sqld.example.com:3306');//MySQL数据库服务器地址

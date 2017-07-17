@@ -6,7 +6,7 @@
 * 失效后用户访问各个接入本SSO统一身份认证系统的网站需要重新走SSO统一登录认证流程。。。
 * 业务应用续期调用方法（如通过file_get_contents调用获得返回值）：renewal.php?session=delay
 * 必须传入session参数值为delay，且必须在会话尚未过期的时段方可调用，其他未授权对象的调用会被全部重定向到登录页面。
-* Copyright 2017 DingStudio All Right Reserved
+* Copyright 2017 DingStudio All Rights Reserved
 */
 
 header("Content-Type: text/html; charset=UTF-8");

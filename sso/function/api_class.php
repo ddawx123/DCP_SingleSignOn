@@ -3,7 +3,7 @@
  * API接口类_v2内部版本
  * @package DingStudio_API_Interface
  * @subpackage API/Class 核心类库
- * @copyright DingStudio 2016-2017 All Right Reserved
+ * @copyright DingStudio 2016-2017 All Rights Reserved
  */
 
 class Response {
