@@ -1,0 +1,9 @@
+@charset "utf-8";
+* { outline:none;}
+body { margin:0px; padding:15px 0 0 10px; background:#FFF;}
+body, button, input { font:12px/1.5 Tahoma, Helvetica, arial, \5b8b\4f53;}
+a { color:#333; text-decoration:none;}
+a:hover { color:#F30; text-decoration:underline;}
+form { display:inline;}
+.input1 { padding:2px 3px; height:19px; background:url(../images/inputbox.png); font-size:14px; border:1px solid; border-color:#9a9a9a #cdcdcd #cdcdcd #9a9a9a; width:115px;}
+.area1 { padding:2px 3px; background:url(../images/inputbox.png) no-repeat; font-size:14px; border:1px solid; border-color:#9a9a9a #cdcdcd #cdcdcd #9a9a9a; width:115px; line-height:1.7;}
