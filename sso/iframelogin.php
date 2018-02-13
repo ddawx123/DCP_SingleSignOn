@@ -47,12 +47,13 @@ if (CoreServlet::SSOCheckExist("0")=="authed") {
 						location.href = "javascript:document.write('您已成功登录，请返回继续浏览。');";
     		        }
     		        else {
+						document.getElementById('password').value = "";
 						alert('登录失败，请检查用户名或密码是否正确。');
     		        }
     		    }
     		}
     		xhr.withCredentials = true;
-    		xhr.open("POST","https://passport.dingstudio.cn/sso/api?format=ajaxlogin",true);
+    		xhr.open("POST","https://passport.dingstudio.cn/sso/api?format=json&action=login",true);
     		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     		xhr.send('username=' + account + '&userpwd=' + passwd + '&cors_domain=' + window.location.protocol + '//' + window.location.host);
 			return false;
@@ -72,7 +73,7 @@ if (CoreServlet::SSOCheckExist("0")=="authed") {
 <td height="90">
 <br><br>
 <input type="image" value="" src="static/images/btnLogin.gif" name="submit" align="absmiddle">
-<a href='https://passport.dingstudio.cn/sso/register' target='_blank'>注册</a>　
+<a href='https://passport.dingstudio.cn/sso/login.php?mod=register' target='_blank'>注册</a>　
 <a href='https://passport.dingstudio.cn/sso/login.php?mod=findpassword' target='_blank'>忘了密码？</a>
 </td>
 </tr>

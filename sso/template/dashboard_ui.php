@@ -38,7 +38,7 @@ $dbhandle->close();
     <![endif]-->
   </head>
 
-  <body>
+  <body oncontextmenu="window.event.returnValue=false" onselectstart="return false">
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
@@ -55,8 +55,8 @@ $dbhandle->close();
           <ul class="nav navbar-nav navbar-right">
 			<li><a>欢迎<?php echo $_COOKIE["dingstudio_sso"]; ?></a></li>
             <li><a href="./usercenter.php">首页</a></li>
-            <li><a href="./usercenter.php?action=account-config#userinfochange">个人信息</a></li>
-            <li><a href="./usercenter.php?action=account-config#pwdchange">账户设置</a></li>
+            <li><a href="?action=account-config#userinfochange">个人信息</a></li>
+            <li><a href="?action=account-config#pwdchange">账户设置</a></li>
             <li><a href="javascript:void(0);" data-toggle="modal" data-target="#myModal">退出</a></li>
           </ul>
           <form class="navbar-form navbar-right">
@@ -93,12 +93,12 @@ $dbhandle->close();
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="./usercenter.php">概述 <span class="sr-only">(current)</span></a></li>
-            <li><a href="./usercenter.php?action=notification">通知中心</a></li>
+            <li><a href="?action=notification">通知中心</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="./usercenter.php?action=app-manager">授权的应用</a></li>
-            <li><a href="./usercenter.php?action=oauth-config">第三方绑定</a></li>
-            <li><a href="./usercenter.php?action=devtool">开发者通道</a></li>
+            <li><a href="?action=app-manager">授权的应用</a></li>
+            <li><a href="?action=oauth-config">第三方绑定</a></li>
+            <li><a href="?action=devtool">开发者通道</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="./login.php?action=dologout&url=login.php">退出登录</a></li>

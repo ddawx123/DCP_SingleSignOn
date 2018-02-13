@@ -4,10 +4,11 @@ if (!file_exists(dirname(__FILE__)."/function/config.php") && !file_exists(dirna
 	die("抱歉，我们没有找到某些系统文件。请检查系统文件完整性！");
 }
 require_once(dirname(__FILE__)."/function/core.php");//引入SSO核心类库
+include(dirname(__FILE__).'/function/apptype.class.php');
 
 //检查是否已存在合法的登陆会话以确定是否给予自动登陆
-if (CoreServlet::SSOCheckExist("0")=="authed" && ToolServlet::GetQueryString('action') != 'dologout' && ToolServlet::GetQueryString('url') != '') {
-	header('Location: '.ToolServlet::GetQueryString('url'));
+if (CoreServlet::SSOCheckExist("0")=="authed" && ToolServlet::GetQueryString('action') != 'dologout' && ToolServlet::GetQueryString('returnUrl') != '') {
+	header('Location: '.ToolServlet::GetQueryString('returnUrl'));
 	exit(0);
 }
 else if (CoreServlet::SSOCheckExist("0")=="authed" && ToolServlet::GetQueryString('action') != 'dologout') {
@@ -38,27 +39,12 @@ else {
 	}
 	else {
 		switch (ToolServlet::GetQueryString('mod')) {
-			case "crossdomain":
-			//引入跨域登录UI
-			break;
-			case "crossdomain_nossl":
-			//引入跨域登录UI(NOSSL模式)
-			break;
 			case "caslogin":
 			require_once(dirname(__FILE__)."/template/caslogin_ui.php");//引入同父域登录UI
 			break;
 			case "register":
 			require_once(dirname(__FILE__)."/template/register_ui.php");//引入注册UI
 			break;
-			//////////////////////////////////////////////////////////////////////
-			/* 测试版用户注册界面接入点开始 */
-			//////////////////////////////////////////////////////////////////////
-			case "register_v2":
-			require_once(dirname(__FILE__)."/template/register_ui_v2.php");//引入注册UI_V2测试版
-			break;
-			//////////////////////////////////////////////////////////////////////
-			/* 测试版用户注册界面接入点结束 */
-			//////////////////////////////////////////////////////////////////////
 			case "findpassword":
 			require_once(dirname(__FILE__)."/template/findpwd_ui.php");//引入密码找回UI
 			break;

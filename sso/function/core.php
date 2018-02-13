@@ -1,13 +1,11 @@
 <?php
 /**
 * SSO应用核心库文件，在这里包含了SSO的一些实现方法类+函数过程。
-* @package DingStudio_SSO_CoreServlet
-* @subpackage SSO/Core 核心类库
-* @copyright 2016-2017 DingStudio All Rights Reserved
+* Copyright 2017 DingStudio All Right Reserved
 */
 
 require_once(dirname(__FILE__)."/config.php");//引入应用配置文件
-require_once(dirname(__FILE__)."/api_class.php");//引入API数据输出类
+require_once(dirname(__FILE__)."/api.class.php");//引入API数据输出类
 
 /**
 * 核心认证类
@@ -21,8 +19,7 @@ class CoreServlet {
 	* return string
 	*/
 	public static function SSOCheckExist($special = '0') {
-		$nowtime = date('Ymdhis',time());//获取即时服务器时间
-		if(isset($_COOKIE['dingstudio_sso']) && isset($_COOKIE['dingstudio_ssotoken']) && $nowtime - $_COOKIE['dingstudio_ssotoken'] <= 3600) {//检测SSO状态，如是否存在可信授权信息以及会话超时情况
+		if(isset($_COOKIE['dingstudio_sso']) && isset($_COOKIE['dingstudio_ssotoken'])) {//检测SSO状态，如是否存在可信授权信息以及会话超时情况
 			return "authed";//存在合法会话且处于时效期限内，返回自动登陆
 		}
 		else {
@@ -47,7 +44,7 @@ class CoreServlet {
 				$result = $sqlconn->query($sqlcode);//执行上述SQL语句
 				if ($result->num_rows > 0) {//登陆成功后
 					//$dtoken = md5(uniqid());
-					$dtoken = date('Ymdhis',time());//产生SSO令牌码（使用时间）
+					$dtoken = sha1(date('YmdHis',time()));//产生SSO令牌码（使用时间）
 					$client_ipaddr = ToolServlet::GetClientIpAddress();
 					setcookie("dingstudio_sso", $username, time() + 3600,  "/", constant('cross_domain_config'));
 					setcookie("dingstudio_ssotoken", $dtoken, time() + 3600,  "/", constant('cross_domain_config'));
@@ -70,21 +67,22 @@ class CoreServlet {
 					$result = $sqlconn->query($sqlcode);//执行上述SQL语句
 					$result = $result->fetch_array();//提取数据
 					if (!$result or $result['lastOPTime'] == null) {
-						$current_timestamp = date('Y/m/d h:i:s',time());
+						$current_timestamp = date('Y/m/d H:i:s',time());
 						$sqlcode = "update users set lastOPTime='{$current_timestamp}' where username='{$username}'";//更新用户操作时间到数据库以便备案
 						$result = $sqlconn->query($sqlcode);//执行上述SQL语句
 					}
 					else {
-						$current_timestamp = date('Y/m/d h:i:s',time()).','.$result['lastOPTime'];
+						$current_timestamp = date('Y/m/d H:i:s',time()).','.$result['lastOPTime'];
 						$sqlcode = "update users set lastOPTime='{$current_timestamp}' where username='{$username}'";//更新用户操作时间到数据库以便备案
 						$result = $sqlconn->query($sqlcode);//执行上述SQL语句
 					}
+					MySQLInstance::getInstance()->disconnect();//关闭数据库连接
 					return "authed";
 				}
 				else {
+					MySQLInstance::getInstance()->disconnect();//关闭数据库连接
 					return "noauth";
 				}
-				MySQLInstance::getInstance()->disconnect();//关闭数据库连接
 			}
 		}
 	}
@@ -172,7 +170,7 @@ class ToolServlet {
 	* return string
 	*/
 	public static function GetQueryString($gstr) {
-		$val = !empty($_GET[$gstr]) ? $_GET[$gstr] : null;
+		$val = !empty(htmlspecialchars(@$_REQUEST[$gstr])) ? htmlspecialchars(@$_REQUEST[$gstr]) : null;
 		return $val;
 	}
 

@@ -8,7 +8,7 @@ require_once(dirname(__FILE__)."/function/core.php");//引入SSO核心类库
 //启动安全检测//
 require_once(dirname(__FILE__)."/function/security.class.php");//引入安全防护模块
 $secapp = new Security();
-$secapp->checkDomain();
+$secapp->checkDomain($_SERVER['HTTP_HOST']);
 $secapp->create_CSRFToken();
 //安全检测结束//
 
@@ -87,7 +87,7 @@ else {
 		}
 		break;
 		case "findpwd":
-		if (isset($_POST['email']) && isset($_POST['imgcode'])) {
+		if ($_POST['email'] != '' || $_POST['imgcode'] != '') {
 			if (constant('findpwd_allowed')=='false') {//config.php注册封禁选项读取应用
 				die('<script>alert("非常抱歉，管理员全局禁用了密码重置功能。请联系管理员解决此问题！");document.location="./login.php";</script>');
 			}
@@ -119,13 +119,13 @@ else {
 					$url = $url_type.$_SERVER['HTTP_HOST'].'/sso/login.php?mod=resetpwd&email='.$email.'&token='.$token;//构造密码重置URL
 					$mail = new PHPMailer();
 					$mail->IsSMTP();//set mailer to use SMTP
-					$mail->Host = "smtp.example.cn";//SMTP Host Setup
+					$mail->Host = "smtp.dingstudio.cn";//SMTP Host Setup
 					//$mail->SMTPSecure = "ssl";//SMTP SSL Setup
 					$mail->Port = 25;//SMTP Port Setup
 					$mail->SMTPAuth = true;//SMTP Authmode Setup
-					$mail->Username = "accounts@example.cn";//SMTP Username Setup
-					$mail->Password = "123456";//SMTP Password Setup
-					$mail->From = "accounts@example.cn";//SMTP Fromaddress Setup
+					$mail->Username = "accounts@dingstudio.cn";//SMTP Username Setup
+					$mail->Password = "123@abcD";//SMTP Password Setup
+					$mail->From = "accounts@dingstudio.cn";//SMTP Fromaddress Setup
 					$mail->FromName = "统一身份认证系统";//Mail Theme Name
 					$mail->AddAddress($email, $username);//Mail To Where Address Setup
 					$mail->WordWrap = 50;

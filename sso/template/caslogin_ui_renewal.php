@@ -50,13 +50,13 @@
                 <div class="row">
                     <div class="input-field col s12 center">
                         <img src="static/images/oauth_logo.png" alt="" class="responsive-img valign profile-image-login">
-                        <p class="center login-form-text">使用 <b>小丁工作室-统一身份认证平台</b> 快速登录<br><small>您正在使用站群通行证快速登录：<b><?php echo $appname; ?></b></small></p>
+                        <p class="center login-form-text">使用 <b>小丁工作室-统一身份认证平台</b> 续签会话<br><small>此应用：<b><?php echo $appname; ?></b> 要求二次身份核验</small></p>
                     </div>
                 </div>
                 <div class="row margin">
                     <div class="input-field col s12">
-                        <input class="validate" name="username" id="username" type="text">
-                        <label for="username">用户帐号</label>
+                        <input class="validate" name="username" id="username" type="text" value="<?php echo @$_COOKIE['dingstudio_sso']; ?>" readonly="readonly">
+                        <label for="username">用户帐号（已锁定）</label>
                     </div>
                 </div>
                 <div class="row margin">
@@ -72,10 +72,10 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s6 m6 l6">
-                        <p class="margin medium-small"><a href="./login.php?mod=register">现在注册</a></p>
+                        <p class="margin medium-small"><a href="./usercenter.php">用户中心</a></p>
                     </div>
                     <div class="input-field col s6 m6 l6">
-                        <p class="margin right-align medium-small"><a href="./login.php?mod=findpassword">忘记密码?</a></p>
+                        <p class="margin right-align medium-small"><a href="./login.php?action=dologout&url=<?php echo urlencode($_SERVER['REQUEST_URI']); ?>">切换账号</a></p>
                     </div>
             </form>
         </div>

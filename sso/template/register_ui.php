@@ -15,16 +15,22 @@
 		</script>
 		<script src="static/js/jquery.min.js"></script>
 	</head>
-	<body>
+	<body oncontextmenu="window.event.returnValue=false" onselectstart="return false">
 		<!-- Fourth -->
 			<section id="fourth" class="main">
+				<!--<header>
+					<div class="container">
+						<h2><strong>账户注册系统</strong></h2>
+						<p>您正在申请统一认证账号，注册成功后您可在<br/>本主域名下使用此通行证自动登录其他应用。</p>
+					</div>
+				</header>-->
 				<div class="content style4 featured">
 					<div class="container 75%">
 						<form id="form" method="post" action="./member.php?action=doregister">
 							<div class="12u 12u(mobile)">
 								<br/>
 									<h2 style="font-size: 50px"><strong>账户注册系统</strong></h2>
-									<p>您正在申请统一认证账号，注册成功后您可在<br/>本主域名下使用此通行证自动登录其他应用。</p>
+									<p>一个帐号，通行所有小丁工作室旗下网站</p>
 								<br/>
 							</div>
 							<div class="row 50%">
@@ -81,7 +87,7 @@
 				</ul>
 				<div class="copyright">
 					<ul class="menu">
-						<li>&copy; 2017.</li><li>Designed by: DingStudio</li>
+						<li>&copy;Copyright 2012-<?php echo date('Y',time()); ?>.</li><li>Designed by: DingStudio</li>
 					</ul>
 				</div>
 			</section>

@@ -15,7 +15,7 @@
 </script>
 </head>
 
-<body>
+<body oncontextmenu="window.event.returnValue=false" onselectstart="return false">
 <h1 align="center">密码重置系统</h1>
 <div id="loginbox" align="center">
 	<form action="./member.php?action=findpwd" method="post">

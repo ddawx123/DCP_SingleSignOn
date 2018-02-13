@@ -3,8 +3,9 @@
  * 安全增强组件类_v1内部版本
  * @package DingStudio_API_Interface
  * @subpackage API/Security 安全类库
- * @copyright DingStudio 2016-2017 All Rights Reserved
+ * @copyright DingStudio 2017 All Right Reserved
  */
+require_once(dirname(__FILE__).'/api.class.php');
 
 class Security {
 
@@ -28,12 +29,7 @@ class Security {
     }
 
     public function CSRF_Breaker() {
-        header('Content-Type: text/plain; charset=UTF-8');
-        $res = array(
-            'code'  =>  403,
-            'message'   =>  'Sorry, the system was protected by DingStudio CSRF Firewall.',
-            'requestId' =>  date('Ymdhis',time())
-        );
-        die(json_encode($res,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES));
+        $response = Response::getInstance('json');
+        $response->make(403, 'Sorry, the system was protected by DingStudio CSRF Firewall.');
     }
 }
